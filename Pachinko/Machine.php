@@ -41,7 +41,7 @@
         }
         function wonnaWin(Card &$val) : bool | int {
             if(rand(0, $this->incomingProbabilty) == 1)return true;
-            else if($val < 6) return $val->valore+1;
+            else if($val->valore < 6) return $val->valore+1;
             else return $val->valore-1;
         }
     }
