@@ -18,6 +18,6 @@
         $second = $mac->reroll();
         $third = $mac->reroll();
 
-        $victory = $mac->victoryAlgorithm($first->valore, $second->valore, $third->valore);
+        $victory = $mac->victoryAlgorithm($first, $second, $third);
     }
 ?>
