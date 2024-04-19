@@ -21,6 +21,7 @@
                         $this->incomingProbabilty = self::INITIAL_PROBABILITY;
                         return true;
                     }else{
+                        $third->impostaCarta($third->valore);
                         $this->incomingProbabilty *= 2;
                         return false;
                     }
