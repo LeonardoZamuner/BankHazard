@@ -1,32 +1,28 @@
 <?php
     include_once("../BaseFunction/BaseFunction.php");
+    include_once("../BaseFunction/CryptoFunctions.php");
+
     $conn = BaseFunction::DBconnection();
-    
-    $dataToEncrypt = 'Hello World';
 
-    $cypherMethod = 'AES-128-CBC';
-    $frasePerLaChiave = "yfxayfxyusxfasxfsauyxasuyxfsaxtfsaxasyuxasuxtfasuxyfsaxfasxuyasfxusayfxsayuxfsauyxtfasxuyf";
-    $key = hash('sha128', $frasePerLaChiave);
-    $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length($cypherMethod));
-
-    $encryptedData = openssl_encrypt($dataToEncrypt, $cypherMethod, $key, $options=0, $iv);
-
-    echo $encryptedData;
-    
-    $decryptedData = openssl_decrypt($encryptedData, $cypherMethod, $key, $options=0, $iv);
-
-    echo $decryptedData;
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST["nome"]) && isset($_POST["cognome"]) && isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["telefono"]) && isset($_POST["residenza"]) && isset($_POST["CF"]) && isset($_POST["dataNascita"]) && isset($_POST["luogoNascita"]) && isset($_POST["sesso"])) {
             $nome = $_POST["nome"];
+            $crtyptoName  = CryptoFunctions::Cryptazionamento($nome);
             $cognome = $_POST["cognome"];
+            $crtyptoSurname  = CryptoFunctions::Cryptazionamento($cognome);
             $email = $_POST["email"];
+            $crtyptoEmail = CryptoFunctions::Cryptazionamento($email);
             $password = $_POST["password"];
             $telefono = $_POST["telefono"];
+            $crtyptoTel  = CryptoFunctions::Cryptazionamento($telefono);
             $residenza = $_POST["residenza"];
+            $crtyptoRes  = CryptoFunctions::Cryptazionamento($residenza);
             $CF = $_POST["CF"];
+            $crtyptoCF  = CryptoFunctions::Cryptazionamento($CF);
             $dataNascita = $_POST["dataNascita"];
+            $crtyptoNascita  = CryptoFunctions::Cryptazionamento($dataNascita);
             $luogoNascita = $_POST["luogoNascita"];
+            $crtyptoLuogo  = CryptoFunctions::Cryptazionamento($luogoNascita);
             $sesso = $_POST["sesso"];
             $CAP = $_POST["CAP"];
             $query = "SELECT * FROM utenti WHERE email='$email'";
@@ -37,7 +33,7 @@
                 $password_hash = md5($password);
                 $insert_query = "INSERT INTO utenti (Nome, Cognome, email, Password, CF, NumeroTelefono, CAP, Residenza, LuogoNascita, DataNascita, Sesso) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $result = $conn->prepare($insert_query);
-                $result->bind_param("sssssiisssi", $nome, $cognome, $email, $passmd5, $CF, $telefono, $CAP, $residenza, $luogoNascita, $dataNascita, $sesso);
+                $result->bind_param("sssssiisssi", $crtyptoName, $crtyptoSurname, $crtyptoEmail, $passmd5, $crtyptoCF, $crtyptoTel, $CAP, $crtyptoRes, $crtyptoLuogo, $crtyptoNascita, $sesso);
                 $result->execute();
                 if ($result) {
                     BaseFunction::CreateSession();
