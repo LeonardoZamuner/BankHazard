@@ -1,0 +1,32 @@
+body {
+  background-color: #222;
+  color: #fff;
+  padding-top: 5rem;
+}
+
+header {
+  background-color: #333;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.nav-link {
+  color: rgb(255, 0, 0);
+}
+
+.container {
+  margin-top: 5rem;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
