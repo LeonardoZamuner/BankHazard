@@ -1,0 +1,21 @@
+/* Aggiorna gli stili qui */
+
+body {
+  background-color: #222;
+  color: #fff;
+  padding-top: 5rem;
+}
+
+header {
+  background-color: #333;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.nav-link {
+  color: rgb(255, 0, 0);
+  font-size: 16px; /* Imposta la dimensione del font desiderata */
+}
