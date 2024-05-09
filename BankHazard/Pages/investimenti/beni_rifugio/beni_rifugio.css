@@ -1,0 +1,81 @@
+/* stile.css */
+
+body {
+    background-color: #222;
+    color: #fff;
+    padding-top: 5rem;
+  }
+  
+  header {
+    background-color: #333;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+  }
+  
+  .nav-link {
+    color: rgb(255, 0, 0);
+  }
+
+nav {
+    background-color: #333;
+    padding: 10px;
+}
+
+#menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#menu li {
+    display: inline;
+    margin-right: 10px;
+}
+
+#menu li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#menu li a:hover {
+    color: #f00;
+}
+
+main {
+    padding: 20px;
+}
+
+.card {
+    background-color: #444;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.movers {
+    display: flex;
+}
+
+.gain, .loss {
+    flex: 1;
+    text-align: center;
+}
+
+.gain {
+    background-color: #4CAF50;
+}
+
+.loss {
+    background-color: #F44336;
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+.card p {
+    margin-bottom: 5px;
+}
