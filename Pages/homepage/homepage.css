@@ -1,0 +1,68 @@
+body {
+  background-color: #222;
+  color: #fff;
+  padding-top: 5rem;
+}
+
+header {
+  background-color: #333;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.nav-item {
+  font-size: 22px !important;
+  text-transform: uppercase;
+}
+
+.nav-link {
+  color: rgb(255, 0, 0);
+}
+
+.container {
+  margin-top: 5rem;
+  color: #fff;
+}
+
+#saldo-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.chart-container {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+#saldo-chart,
+#line-chart {
+  margin: auto;
+  display: block;
+}
+
+#charts-container {
+  display: flex;
+  justify-content: center;
+}
+
+#line-chart-container {
+  margin-left: 2rem;
+}
