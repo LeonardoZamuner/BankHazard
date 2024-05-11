@@ -1,0 +1,149 @@
+:root {
+    --main-bg-color: #333;
+    --navbar-color: #f00;
+    --card-bg-color: #808080;
+    --card-text-color: #fff;
+    --primary-color: #ff0000;
+}
+
+body {
+    background-color: #222 !important;
+    color: #fff;
+    padding-top: 8rem;
+    margin: 0;
+    /* Rimuove il margine predefinito */
+    font-family: Arial, sans-serif;
+    /* Usa un font predefinito */
+}
+
+
+header {
+    background-color: #333;
+    padding: 10px;
+    position: fixed;
+    color: #f00;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    display: flex;
+    /* Rendi la barra di navigazione flessibile */
+    justify-content: space-between;
+    /* Allinea gli elementi in modo uniforme */
+}
+
+.nav-item {
+    font-size: 22px !important;
+    text-transform: uppercase;
+}
+
+.nav-link {
+    color: rgb(255, 0, 0);
+}
+
+#menu li a {
+
+    text-decoration: none;
+    /* Rimuove la sottolineatura dai link */
+    transition: color 0.3s ease;
+    /* Aggiunge una transizione al colore del testo */
+}
+
+#menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#menu li {
+    display: inline;
+    margin-right: 10px;
+}
+
+main {
+    padding: 20px;
+}
+
+h2 {
+    color: #fff;
+}
+
+.card {
+    background-color: #333 !important;
+    color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    /* Aggiunge una transizione al passaggio del mouse */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    /* Solleva leggermente la carta al passaggio del mouse */
+}
+
+.card h2 {
+    margin-top: 0;
+    font-size: 24px;
+    /* Aumenta la dimensione del titolo */
+}
+
+.card p {
+    margin-bottom: 10px;
+    font-size: 16px;
+    /* Aumenta la dimensione del testo */
+    line-height: 1.6;
+    /* Aumenta lo spazio tra le righe per una migliore leggibilità */
+}
+
+.card button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+    background-color: #ff6666;
+    /* Cambia il colore al passaggio del mouse */
+}
+
+.movers {
+    display: flex;
+    justify-content: space-between;
+    /* Allinea gli elementi in modo uniforme */
+    margin-bottom: 20px;
+    /* Aumenta il margine inferiore per una migliore separazione */
+}
+
+.gain,
+.loss {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    /* Aggiunge spaziatura interna */
+    border-radius: 5px;
+    /* Aggiunge un bordo arrotondato */
+}
+
+.gain {
+    background-color: #4CAF50;
+}
+
+.loss {
+    background-color: #F44336;
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+.card p {
+    margin-bottom: 10px;
+    /* Aumenta il margine inferiore per una migliore leggibilità */
+}
