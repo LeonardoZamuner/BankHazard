@@ -1,0 +1,81 @@
+body {
+    background-color: #000 !important;
+
+    padding-top: 5rem;
+    margin: 0;
+    /* Rimuove il margine predefinito */
+    font-family: Arial, sans-serif;
+    /* Usa un font predefinito */
+}
+
+header {
+    background-color: #333;
+    padding: 10px;
+    position: fixed;
+    color: #f00;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    display: flex;
+    /* Rendi la barra di navigazione flessibile */
+    justify-content: space-between;
+    /* Allinea gli elementi in modo uniforme */
+}
+
+header img {
+    margin-left: 20px;
+}
+
+.nav-item {
+    font-size: 22px !important;
+    text-transform: uppercase;
+}
+
+.nav-link {
+    color: rgb(255, 0, 0);
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+main {
+    padding: 20px;
+}
+
+#fondi-comuni {
+    text-align: center;
+}
+
+.card-fondo {
+    background-color: #444;
+    color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.card-fondo h2 {
+    margin-top: 0;
+}
+
+.card-fondo p {
+    margin-bottom: 10px;
+}
+
+.card-fondo button {
+    background-color: #f00;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.card-fondo button:hover {
+    background-color: #c00;
+}
