@@ -34,7 +34,7 @@
           <a class="nav-link active" href="../news_e_mercati/news_e_mercati.php">News e Mercati</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../Log/login.php">Esci</a>
+          <a class="nav-link" href="../../Log/logout.php">Esci</a>
         </li>
       </ul>
     </nav>

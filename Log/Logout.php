@@ -5,5 +5,5 @@
     $_SESSION = array();
     // elimina la sessione
     session_destroy();
-    header("Location: Login.php");
+    header("Location: Login.html");
 ?>

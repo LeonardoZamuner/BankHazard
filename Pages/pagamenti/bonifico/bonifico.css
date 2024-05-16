@@ -19,11 +19,15 @@ header {
 }
 
 .nav-link {
-  color: rgb(255, 0, 0);
+  color: rgb(255, 0, 0) !important;
 }
 
 input{
   width: 100%;
   padding: 12px 20px;
   margin: 8px, 0;
+}
+
+label{
+  color: #fff;
 }
