@@ -22,11 +22,11 @@
                         return true;
                     }else{
                         $third->impostaCarta($third->valore);
-                        $this->incomingProbabilty *= 2;
+                        $this->incomingProbabilty /= 2;
                         return false;
                     }
                 }else if($first == $second || $second == $third || $third == $first){
-                    $this->incomingProbabilty *= 2;
+                    $this->incomingProbabilty /= 2;
                     return false;
                 }else{
                     return false;

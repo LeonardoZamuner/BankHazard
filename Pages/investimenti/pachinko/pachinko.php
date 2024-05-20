@@ -57,24 +57,17 @@
                 <?php
                 if(isset($_POST["banana"])){
                     $vittoria = spin($_SESSION["macchina"], $_SESSION["numGiri"]);
-                    setcookie("spin", "false");
-
                 }
                 if($vittoria){
                     echo "vittoria";
-                    sleep(2);
                     setcookie("spin", "true");
                     header("Location: ../investimenti.php");
                 } 
                 elseif($_SESSION["numGiri"] <= 0) {
                     echo "giri terminati <br> Reindirizzamento in corso";
-                    sleep(1);
                     setcookie("spin", "true");
                     header("Location: ../investimenti.php");
                 }
-                else{
-                    setcookie("spin", "true");
-                } 
             }else{
                 while($_SESSION["numGiri"] > 0 && !($_SESSION["vittoria"])){
                     $first = $_SESSION["macchina"]->reroll();
@@ -83,17 +76,13 @@
     
                     $vittoria = $_SESSION["macchina"]->victoryAlgorithm($first, $second, $third);
                     $_SESSION["numGiri"]--;
-                    sleep(1);
                     if($vittoria){
-                        echo "vittoria";
-                        sleep(2);
                         header("Location: ../investimenti.php");
                     }elseif($_SESSION["numGiri"] <= 0) {
                         echo "giri terminati <br> Reindirizzamento in corso";
                         sleep(1);
                         header("Location: ../investimenti.php");
                     }
-                    else echo "non vittoria";
                 }
                
             }
