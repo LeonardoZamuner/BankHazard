@@ -27,7 +27,7 @@
                 $second = $mac->reroll();
                 $third = $mac->reroll();
                 $numGiri--;
-                return $victory = $mac->victoryAlgorithm($first, $second, $third);                
+                return $victory = $mac->victoryAlgorithm($first, $second, $third);
             }
 
             if(isset($_POST["configure"]) && $_POST["configure"]){
@@ -37,10 +37,8 @@
                 $_SESSION["vittoria"] = false;
                 $_SESSION["numGiri"] = $_SESSION["GameMode"] ? 30 : 70;
             }
-
-            echo "questa è la sessione cacca:".$_SESSION["GameMode"];
             $vittoria = false;
-            if($_SESSION["GameMode"] == true){
+            if($_SESSION["GameMode"] == 0){
                 ?>
                 <div class = "bottomCentreButton">
                     <form action="pachinko.php" method="post">
