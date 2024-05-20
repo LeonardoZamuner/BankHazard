@@ -3,8 +3,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bonifico</title>
+  <link rel="stylesheet" href="bonifico.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="bonifico/bonifico.css">
 </head>
 
 <body>
@@ -72,7 +72,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p style="color: #000;">Sei sicuro di voler procedere con la ricarica telefonica?</p>
+          <p style="color: #000;">Sei sicuro di voler procedere con il bonifico?</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
