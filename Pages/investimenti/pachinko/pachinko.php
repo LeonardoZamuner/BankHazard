@@ -1,10 +1,9 @@
 <html>
     <head>
-        
+        <script src="pachinko.js"></script>
         <link rel="stylesheet" href="pachinko.css">
     </head>
     <body> 
-        
         <div class="center"> 
             <img id="imgCentre" src= "Immagini/primotassello.png"> 
         </div> 
@@ -14,8 +13,6 @@
         <div class="right"> 
             <img id="imgRight" src= "Immagini/primotassello.png"> 
         </div> 
-        <script src="pachinko.js"></script>
-        
         <?php
             include_once("Cards.php");
             include_once("Machine.php");
@@ -35,7 +32,16 @@
                 $_SESSION["somma"] = $_POST["scommessa"];
                 $_SESSION["macchina"] = new Machine($_SESSION["GameMode"]);
                 $_SESSION["vittoria"] = false;
-                $_SESSION["numGiri"] = $_SESSION["GameMode"] ? 30 : 70;
+                $banana = $_SESSION["GameMode"];
+                switch($banana){
+                    case 0:
+                        $_SESSION["numGiri"] = 30;
+                        break;
+                    case 1:
+                        $_SESSION["numGiri"] = 70;
+                        break;
+                }
+                setcookie("spin", "true");
             }
             $vittoria = false;
             if($_SESSION["GameMode"] == 0){
@@ -46,18 +52,26 @@
                     </form>
                 </div>
                 <?php
-                if(isset($_POST["Banana"]) && $_POST["Banana"] == "spin")$vittoria = spin($_SESSION["macchina"], $_SESSION["numGiri"], $_SESSION["vittoria"]);
+                if(isset($_POST["Banana"]) && $_POST["Banana"] == "spin"){
+                    $vittoria = spin($_SESSION["macchina"], $_SESSION["numGiri"], $_SESSION["vittoria"]);
+                    setcookie("spin", "false");
+                    sleep(1);
+                }
                 if($vittoria){
                     echo "vittoria";
                     sleep(2);
+                    setcookie("spin", "true");
                     header("Location: ../investimenti.php");
                 } 
                 elseif($_SESSION["numGiri"] <= 0) {
                     echo "giri terminati <br> Reindirizzamento in corso";
                     sleep(1);
+                    setcookie("spin", "true");
                     header("Location: ../investimenti.php");
                 }
-                else echo "non vittoria";
+                else{
+                    setcookie("spin", "true");
+                } 
             }else{
                 while($_SESSION["numGiri"] > 0 && !($_SESSION["vittoria"])){
                     $first = $_SESSION["macchina"]->reroll();
