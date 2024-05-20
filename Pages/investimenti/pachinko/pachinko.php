@@ -1,6 +1,6 @@
 <html>
     <head>
-        <script src="pachinko.js"></script>
+        <script src="pachinko.js" defer></script>
         <link rel="stylesheet" href="pachinko.css">
     </head>
     <body> 
@@ -18,13 +18,16 @@
             include_once("Machine.php");
             include_once("../../../BaseFunction/BaseFunction.php");
             BaseFunction::CreateSession();
-            function spin(Machine $mac, int &$numGiri, bool &$victory) : bool
+            function spin(Machine $mac, int &$numGiri) : bool
             {
                 $first = $mac->reroll();
                 $second = $mac->reroll();
                 $third = $mac->reroll();
                 $numGiri--;
-                return $victory = $mac->victoryAlgorithm($first, $second, $third);
+                $json = array('imgLeft' => $first->imgPath, 'imgCentre' => $second->imgPath, 'imgRight' => $third->imgPath);
+                echo json_encode($json);
+                file_put_contents('json.json', json_encode($json));
+                return $mac->victoryAlgorithm($first, $second, $third);
             }
 
             if(isset($_POST["configure"]) && $_POST["configure"]){
@@ -47,15 +50,15 @@
             if($_SESSION["GameMode"] == 0){
                 ?>
                 <div class = "bottomCentreButton">
-                    <form action="pachinko.php" method="post">
-                        <input type="submit" name="Banana" value="spin">
+                    <form action="pachinko.php" method="post" id = "bananaForm">
+                        <button id = "banana" name = "banana">SPIN</button>
                     </form>
                 </div>
                 <?php
-                if(isset($_POST["Banana"]) && $_POST["Banana"] == "spin"){
-                    $vittoria = spin($_SESSION["macchina"], $_SESSION["numGiri"], $_SESSION["vittoria"]);
+                if(isset($_POST["banana"])){
+                    $vittoria = spin($_SESSION["macchina"], $_SESSION["numGiri"]);
                     setcookie("spin", "false");
-                    sleep(1);
+
                 }
                 if($vittoria){
                     echo "vittoria";

@@ -1,7 +1,7 @@
 <?php
     class Card{
         public int $valore = -1;
-        private string|null $imgPath = null;
+        public string|null $imgPath = null;
         public function __construct(int $var) {
             $this->valore = $var;
             $this->impostaCarta($var);
