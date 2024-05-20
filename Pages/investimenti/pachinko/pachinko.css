@@ -1,25 +1,25 @@
 body {
     background-color: #000;
     color: #fff;
-    padding-top: 5rem;
+    padding-top: 8rem;
 }
 
 header {
-background-color: #333;
-padding: 1rem 2rem;
-position: fixed;
-top: 0;
-width: 100%;
-z-index: 999;
+    background-color: #333;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
 }
 
 .nav-item {
-font-size: 22px !important;
-text-transform: uppercase;
+    font-size: 22px !important;
+    text-transform: uppercase;
 }
 
 .nav-link {
-color: rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
 }
 
 header img {
@@ -30,7 +30,17 @@ main {
     padding: 20px;
 }
 
-img { 
+#imgCentre { 
+    width: 300px; 
+    height: 400px;
+}
+
+#imgRight { 
+    width: 300px; 
+    height: 400px;
+}
+
+#imgLeft { 
     width: 300px; 
     height: 400px;
 } 
@@ -68,5 +78,4 @@ img {
 
 #Logo{
     height: 80px !important;
-    width: 95px !important;
 }
