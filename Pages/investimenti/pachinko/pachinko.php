@@ -60,12 +60,11 @@
                 }
                 if($vittoria){
                     echo "vittoria";
-                    setcookie("spin", "true");
                     header("Location: ../investimenti.php");
                 } 
                 elseif($_SESSION["numGiri"] <= 0) {
                     echo "giri terminati <br> Reindirizzamento in corso";
-                    setcookie("spin", "true");
+                    sleep(1);
                     header("Location: ../investimenti.php");
                 }
             }else{
@@ -76,6 +75,7 @@
     
                     $vittoria = $_SESSION["macchina"]->victoryAlgorithm($first, $second, $third);
                     $_SESSION["numGiri"]--;
+                    sleep(1);
                     if($vittoria){
                         header("Location: ../investimenti.php");
                     }elseif($_SESSION["numGiri"] <= 0) {
@@ -83,6 +83,7 @@
                         sleep(1);
                         header("Location: ../investimenti.php");
                     }
+                    else echo "non vittoria";
                 }
                
             }
