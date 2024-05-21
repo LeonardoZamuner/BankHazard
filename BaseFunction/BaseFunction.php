@@ -17,6 +17,10 @@ class  BaseFunction{
         session_save_path();
         return session_start();
     }
+    public static function takeID(string $email) : int {
+        $conn = BaseFunction::DBconnection();
+        return $conn->query("SELECT DISTINCT ID_utente FROM utenti WHERE email = $email")->fetch_assoc();
+    }
 }
 
 ?>

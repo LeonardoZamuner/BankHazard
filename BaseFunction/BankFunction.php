@@ -1,7 +1,7 @@
 <?php 
     include_once("../BaseFunction/BaseFunction.php");
 class  BankFunction{    
-    function Bonifico(int $idIntestatario, string $nomeIntestatario, float $importo, string $IBAN, string $causale) : bool|string {
+    public static function Bonifico(int $idIntestatario, string $nomeIntestatario, float $importo, string $IBAN, string $causale) : bool|string {
         $conn = BaseFunction::DBconnection();
         //disattivo gli autocommit per iniziare una transaction
         $conn->autocommit(false);
@@ -41,7 +41,7 @@ class  BankFunction{
         }
         return true;
     }
-    function ZontaSchei(int $idIntestatario, float $importo) : bool|string {
+    public static function ZontaSchei(int $idIntestatario, float $importo) : bool|string {
         $conn = BaseFunction::DBconnection();
         //controllo i danari posseduti dal gentil cittadino
         $sql = "SELECT SaldoCorrente FROM contocorrente WHERE Intestatario = ?";
@@ -58,7 +58,7 @@ class  BankFunction{
         $result = $result->get_result();
         return true;
     }
-    function CavaSchei(int $idIntestatario, int $importo) : bool|string {
+    public static function CavaSchei(int $idIntestatario, int $importo) : bool|string {
         $conn = BaseFunction::DBconnection();
         //controllo i danari posseduti dal gentil cittadino
         $sql = "SELECT SaldoCorrente FROM contocorrente WHERE Intestatario = ?";
@@ -79,7 +79,7 @@ class  BankFunction{
         }
         return true;
     }
-    public function newCard(string $IBAN, int $idIntestatario, int $numeroCarta, int $CVV, string $tipologia, int $contoCorrelato = null) : void
+    public static function newCard(string $IBAN, int $idIntestatario, int $numeroCarta, int $CVV, string $tipologia, int $contoCorrelato = null) : void
     {
         $conn = BaseFunction::DBconnection();
         if($contoCorrelato == null){
@@ -99,19 +99,18 @@ class  BankFunction{
         }
         
     }
-    public function calcolaScadenza() : string
+    public static function calcolaScadenza() : string
     {
         $dataOggi = date("Y/m/d");
         $dataScadenza = date('Y-m-d', strtotime($dataOggi. ' + 5 years'));;
         return $dataScadenza;
     }
-    public function newBankAccount(string $IBAN, int $idIntestatario) : void
+    public static function newBankAccount(string $IBAN, int $idIntestatario) : void
     {
         $conn = BaseFunction::DBconnection();
 
         $insert_query = "INSERT INTO carte (IBAN, SaldoDisponibile, SaldoContabile, Intestatario) VALUES (?, ? , ?, ?)";
         $result = $conn->prepare($insert_query);
-        $dataScadenza = self::calcolaScadenza();
         $contantiBase = 0;
         $result->bind_param("sddi", $IBAN, $contantiBase, $contantiBase, $idIntestatario);
         $result->execute();

@@ -17,6 +17,7 @@
             include_once("Cards.php");
             include_once("Machine.php");
             include_once("../../../BaseFunction/BaseFunction.php");
+            include_once("../../../BaseFunction/BankFunction.php");
             BaseFunction::CreateSession();
             function spin(Machine $mac, int &$numGiri) : bool
             {
@@ -59,10 +60,12 @@
                     $vittoria = spin($_SESSION["macchina"], $_SESSION["numGiri"]);
                 }
                 if($vittoria){
+                    BankFunction::ZontaSchei(BaseFunction::takeID($_SESSION["email"]), $_SESSION["somma"]*2);
                     echo "vittoria";
                     header("Location: ../investimenti.php");
                 } 
                 elseif($_SESSION["numGiri"] <= 0) {
+                    BankFunction::CavaSchei(BaseFunction::takeID($_SESSION["email"]), $_SESSION["somma"]);
                     echo "giri terminati <br> Reindirizzamento in corso";
                     sleep(1);
                     header("Location: ../investimenti.php");
@@ -77,8 +80,10 @@
                     $_SESSION["numGiri"]--;
                     sleep(1);
                     if($vittoria){
+                        BankFunction::ZontaSchei(BaseFunction::takeID($_SESSION["email"]), $_SESSION["somma"]*2);
                         header("Location: ../investimenti.php");
                     }elseif($_SESSION["numGiri"] <= 0) {
+                        BankFunction::CavaSchei(BaseFunction::takeID($_SESSION["email"]), $_SESSION["somma"]);
                         echo "giri terminati <br> Reindirizzamento in corso";
                         sleep(1);
                         header("Location: ../investimenti.php");
