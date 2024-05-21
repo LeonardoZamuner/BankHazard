@@ -79,3 +79,7 @@ main {
 #Logo{
     height: 80px !important;
 }
+
+#bodyMachine {
+    background-image: url("Immagini/sfondo.png");
+}

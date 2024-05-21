@@ -3,8 +3,8 @@
         <script src="pachinko.js" defer></script>
         <link rel="stylesheet" href="pachinko.css">
     </head>
-    <body> 
-        <div class="center"> 
+    <body id = "bodyMachine"> 
+       <!-- <div class="center"> 
             <img id="imgCentre" src= "Immagini/primotassello.png"> 
         </div> 
         <div class="left"> 
@@ -12,12 +12,13 @@
         </div>
         <div class="right"> 
             <img id="imgRight" src= "Immagini/primotassello.png"> 
-        </div> 
+        </div> -->
         <?php
             include_once("Cards.php");
             include_once("Machine.php");
             include_once("../../../BaseFunction/BaseFunction.php");
             include_once("../../../BaseFunction/BankFunction.php");
+            
             BaseFunction::CreateSession();
             function spin(Machine $mac, int &$numGiri) : bool
             {
@@ -26,7 +27,6 @@
                 $third = $mac->reroll();
                 $numGiri--;
                 $json = array('imgLeft' => $first->imgPath, 'imgCentre' => $second->imgPath, 'imgRight' => $third->imgPath);
-                echo json_encode($json);
                 file_put_contents('json.json', json_encode($json));
                 return $mac->victoryAlgorithm($first, $second, $third);
             }
@@ -45,7 +45,6 @@
                         $_SESSION["numGiri"] = 70;
                         break;
                 }
-                setcookie("spin", "true");
             }
             $vittoria = false;
             if($_SESSION["GameMode"] == 0){
@@ -92,7 +91,6 @@
                 }
                
             }
-            echo "Numero giri".$_SESSION["numGiri"];
         ?>
     </body>
 </html>
