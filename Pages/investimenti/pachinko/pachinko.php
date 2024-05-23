@@ -1,10 +1,11 @@
 <html>
     <head>
         <script src="pachinko.js" defer></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="pachinko.css">
     </head>
     <body id = "bodyMachine"> 
-       <!-- <div class="center"> 
+       <div class="center"> 
             <img id="imgCentre" src= "Immagini/primotassello.png"> 
         </div> 
         <div class="left"> 
@@ -12,12 +13,13 @@
         </div>
         <div class="right"> 
             <img id="imgRight" src= "Immagini/primotassello.png"> 
-        </div> -->
+        </div>
         <?php
+        
             include_once("Cards.php");
             include_once("Machine.php");
-            include_once("../../../BaseFunction/BaseFunction.php");
-            include_once("../../../BaseFunction/BankFunction.php");
+            include_once("./../../../BaseFunction/BaseFunction.php");
+            //include_once("./../../../BaseFunction/BankFunction.php");
             
             BaseFunction::CreateSession();
             function spin(Machine $mac, int &$numGiri) : bool
@@ -51,7 +53,7 @@
                 ?>
                 <div class = "bottomCentreButton">
                     <form action="pachinko.php" method="post" id = "bananaForm">
-                        <button id = "banana" name = "banana">SPIN</button>
+                        <button id = "banana" name = "banana" class="btn btn-danger btn-lg btn-block">SPIN</button>
                     </form>
                 </div>
                 <?php
@@ -59,12 +61,12 @@
                     $vittoria = spin($_SESSION["macchina"], $_SESSION["numGiri"]);
                 }
                 if($vittoria){
-                    BankFunction::ZontaSchei(BaseFunction::takeID($_SESSION["email"]), $_SESSION["somma"]*2);
+                    //BankFunction::ZontaSchei(BaseFunction::takeID($_SESSION["email"]), $_SESSION["somma"]*2);
                     echo "vittoria";
                     header("Location: ../investimenti.php");
                 } 
                 elseif($_SESSION["numGiri"] <= 0) {
-                    BankFunction::CavaSchei(BaseFunction::takeID($_SESSION["email"]), $_SESSION["somma"]);
+                    //BankFunction::CavaSchei(BaseFunction::takeID($_SESSION["email"]), $_SESSION["somma"]);
                     echo "giri terminati <br> Reindirizzamento in corso";
                     sleep(1);
                     header("Location: ../investimenti.php");
@@ -79,11 +81,10 @@
                     $_SESSION["numGiri"]--;
                     sleep(1);
                     if($vittoria){
-                        BankFunction::ZontaSchei(BaseFunction::takeID($_SESSION["email"]), $_SESSION["somma"]*2);
+                        //BankFunction::ZontaSchei(BaseFunction::takeID($_SESSION["email"]), $_SESSION["somma"]*2);
                         header("Location: ../investimenti.php");
                     }elseif($_SESSION["numGiri"] <= 0) {
-                        BankFunction::CavaSchei(BaseFunction::takeID($_SESSION["email"]), $_SESSION["somma"]);
-                        echo "giri terminati <br> Reindirizzamento in corso";
+                        //BankFunction::CavaSchei(BaseFunction::takeID($_SESSION["email"]), $_SESSION["somma"]);
                         sleep(1);
                         header("Location: ../investimenti.php");
                     }
