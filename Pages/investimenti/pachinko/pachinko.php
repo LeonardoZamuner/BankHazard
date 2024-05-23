@@ -86,7 +86,7 @@
                     }
                     else echo "non vittoria";
                 }
-               
+
             }
         ?>
     </body>
