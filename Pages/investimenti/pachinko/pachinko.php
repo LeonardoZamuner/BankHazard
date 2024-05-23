@@ -29,7 +29,8 @@
                 $third = $mac->reroll();
                 $numGiri--;
                 $json = array('imgLeft' => $first->imgPath, 'imgCentre' => $second->imgPath, 'imgRight' => $third->imgPath);
-                file_put_contents('json.json', json_encode($json));
+                //echo json_encode($json);
+                file_put_contents('image.json', json_encode($json));
                 return $mac->victoryAlgorithm($first, $second, $third);
             }
 
@@ -73,12 +74,7 @@
                 }
             }else{
                 while($_SESSION["numGiri"] > 0 && !($_SESSION["vittoria"])){
-                    $first = $_SESSION["macchina"]->reroll();
-                    $second = $_SESSION["macchina"]->reroll();
-                    $third = $_SESSION["macchina"]->reroll();
-    
-                    $vittoria = $_SESSION["macchina"]->victoryAlgorithm($first, $second, $third);
-                    $_SESSION["numGiri"]--;
+                    $vittoria = spin($_SESSION["macchina"], $_SESSION["numGiri"]);
                     sleep(1);
                     if($vittoria){
                         //BankFunction::ZontaSchei(BaseFunction::takeID($_SESSION["email"]), $_SESSION["somma"]*2);

@@ -20,7 +20,7 @@ function Animate() {
 }
 
 async function takeTheFuckingJsonFromTheServer(){
-    const response = await fetch('json.json');
+    const response = await fetch('image.json');
 
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
