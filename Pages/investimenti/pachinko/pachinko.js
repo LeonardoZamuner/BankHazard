@@ -41,4 +41,3 @@ document.getElementById("banana").addEventListener("click", async (evento)=>{
         document.getElementById("bananaForm").submit();
     }
 });
-
