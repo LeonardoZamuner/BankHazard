@@ -1,5 +1,5 @@
 <?php 
-    include_once("../BaseFunction/BaseFunction.php");
+    include_once("BaseFunction.php");
 class  BankFunction{    
     public static function Bonifico(int $idIntestatario, string $nomeIntestatario, float $importo, string $IBAN, string $causale) : bool|string {
         $conn = BaseFunction::DBconnection();

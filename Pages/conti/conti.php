@@ -55,9 +55,9 @@
             </th>
             <tb>
                 <?php
-                include_once("..\BaseFunction\BankFunction.php");
-                include_once("..\BaseFunction\BaseFunction.php");
-                BaseFunction::DBconnection();
+                include_once("../../BaseFunction/BankFunction.php");
+                include_once("../../BaseFunction/BaseFunction.php");
+                $conn = BaseFunction::DBconnection();
                 BaseFunction::CreateSession();
                 $sql = "SELECT ID_utente FROM utenti WHERE email=".$_SESSION["email"].";";
                 $result = $conn->query($sql);
