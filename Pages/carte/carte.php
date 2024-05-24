@@ -57,13 +57,11 @@
             </thead>
             <tbody>
                 <?php
-                include_once("..\BaseFunction\BankFunction.php");
-                include_once("..\BaseFunction\BaseFunction.php");
-                BaseFunction::DBconnection();
+                include_once("../../BaseFunction/BankFunction.php");
+                include_once("../../BaseFunction/BaseFunction.php");
+                $conn = BaseFunction::DBconnection();
                 BaseFunction::CreateSession();
-                $sql = "SELECT ID_utente FROM utenti WHERE email=".$_SESSION["email"].";";
-                $result = $conn->query($sql);
-                $idUtente = $result->fetch_assoc()["ID_utente"];
+                $idUtente = BaseFunction::takeID($_SESSION["email"]);
                 // Query per recuperare le carte di credito dell'utente
                 $sql = "SELECT * FROM Carte WHERE $idUtente";
                 $result = $conn->query($sql);

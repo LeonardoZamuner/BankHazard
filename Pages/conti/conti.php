@@ -59,8 +59,7 @@
                 include_once("../../BaseFunction/BaseFunction.php");
                 $conn = BaseFunction::DBconnection();
                 BaseFunction::CreateSession();
-                $sql = "SELECT ID_utente FROM utenti WHERE email=".$_SESSION["email"].";";
-                $result = $conn->query($sql);
+                BaseFunction::takeID($_SESSION["email"]);
                 $idUtente = $result->fetch_assoc()["ID_utente"];
                 // Query per recuperare i conti correnti dell'utente
                 $sql = "SELECT * FROM ContiCorrente WHERE Intestatario = $idUtente";
